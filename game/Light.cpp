@@ -512,11 +512,11 @@ void idLight::SetLightLevel( void ) {
 	intensity = ( float )currentLevel / ( float )levels;
 	color = baseColor * intensity;
 	renderLight.shaderParms[ SHADERPARM_RED ]	= color[ 0 ];
-	renderLight.shaderParms[ SHADERPARM_GREEN ]	= color[ 1 ];
-	renderLight.shaderParms[ SHADERPARM_BLUE ]	= color[ 2 ];
+	renderLight.shaderParms[ SHADERPARM_GREEN ]	= color[ 0 ];//was 1
+	renderLight.shaderParms[ SHADERPARM_BLUE ]	= color[ 0 ];//was 2
 	renderEntity.shaderParms[ SHADERPARM_RED ]	= color[ 0 ];
-	renderEntity.shaderParms[ SHADERPARM_GREEN ]= color[ 1 ];
-	renderEntity.shaderParms[ SHADERPARM_BLUE ]	= color[ 2 ];
+	renderEntity.shaderParms[ SHADERPARM_GREEN ]= color[ 0 ];//was 1
+	renderEntity.shaderParms[ SHADERPARM_BLUE ]	= color[ 0 ];//was 2
 	PresentLightDefChange();
 	PresentModelDefChange();
 }

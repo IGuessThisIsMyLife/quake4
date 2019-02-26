@@ -1496,9 +1496,9 @@ void idPlayer::Init( void ) {
 	const char			*value;
 	
 	noclip					= false;
-	godmode					= false;
+	godmode					= true; //was false
 	godmodeDamage			= 0;
-	undying					= g_forceUndying.GetBool() ? !gameLocal.isMultiplayer : false;
+	undying					= true;//was g_forceUndying.GetBool() ? !gameLocal.isMultiplayer : false
 
 	oldButtons				= 0;
 	oldFlags				= 0;
@@ -1552,7 +1552,7 @@ void idPlayer::Init( void ) {
 	playerView.ClearEffects();
 
 	// damage values
-	fl.takedamage			= true;
+	fl.takedamage			= false;//was true
 	ClearPain();
 
 	// restore persistent data
@@ -1564,7 +1564,7 @@ void idPlayer::Init( void ) {
 	currentWeapon = -1;
 	previousWeapon = -1;
 	
-	flashlightOn	  = false;
+	flashlightOn	  = true; //was false
 
 	idealLegsYaw = 0.0f;
 	legsYaw = 0.0f;
@@ -1974,7 +1974,7 @@ void idPlayer::Spawn( void ) {
 		}
 // RAVEN BEGIN
 // mekberg: set to blaster now and disable the weapon.
-		idealWeapon = SlotForWeapon ( "weapon_blaster" ); 
+		idealWeapon = SlotForWeapon ( "weapon_machine_gun" ); 
 		Event_DisableWeapon( );
 // RAVEN END
 	} else {
@@ -4155,10 +4155,10 @@ bool idPlayer::Give( const char *statname, const char *value, bool dropped ) {
 
 /*
 ===============
-idPlayer::GiveItem
+idPlayer::GiveItem 
 
 Returns false if the item shouldn't be picked up
-===============
+=============== useful
 */
 bool idPlayer::GiveItem( idItem *item ) {
 	int					i;
@@ -8565,7 +8565,7 @@ void idPlayer::PerformImpulse( int impulse ) {
 			break;
 		}
 
-// RITUAL BEGIN
+// RITUAL BEGIN		useful
 // squirrel: Mode-agnostic buymenus
 		case IMPULSE_100:	AttemptToBuyItem( "weapon_shotgun" );				break;
 		case IMPULSE_101:	AttemptToBuyItem( "weapon_machinegun" );			break;
@@ -10041,7 +10041,7 @@ void idPlayer::CalcDamagePoints( idEntity *inflictor, idEntity *attacker, const 
 
 /*
 ============
-Damage
+Damage		useful
 
 this		entity that is being damaged
 inflictor	entity that is causing the damage

@@ -62,10 +62,10 @@ rvWeaponBlaster::UpdateFlashlight
 */
 bool rvWeaponBlaster::UpdateFlashlight ( void ) {
 	if ( !wsfl.flashlight ) {
-		return false;
+		return false; 
 	}
 	
-	SetState ( "Flashlight", 0 );
+	SetState ( "Flashlight", 0 ); 
 	return true;		
 }
 
@@ -80,7 +80,7 @@ void rvWeaponBlaster::Flashlight ( bool on ) {
 	if ( on ) {
 		worldModel->ShowSurface ( "models/weapons/blaster/flare" );
 		viewModel->ShowSurface ( "models/weapons/blaster/flare" );
-	} else {
+	} else { 
 		worldModel->HideSurface ( "models/weapons/blaster/flare" );
 		viewModel->HideSurface ( "models/weapons/blaster/flare" );
 	}
@@ -223,7 +223,7 @@ CLASS_STATES_DECLARATION ( rvWeaponBlaster )
 	STATE ( "Idle",							rvWeaponBlaster::State_Idle)
 	STATE ( "Charge",						rvWeaponBlaster::State_Charge )
 	STATE ( "Charged",						rvWeaponBlaster::State_Charged )
-	STATE ( "Fire",							rvWeaponBlaster::State_Fire )
+	//STATE ( "Fire",							rvWeaponBlaster::State_Fire )
 	STATE ( "Flashlight",					rvWeaponBlaster::State_Flashlight )
 END_CLASS_STATES
 
@@ -396,7 +396,7 @@ stateResult_t rvWeaponBlaster::State_Charged ( const stateParms_t& parms ) {
 ================
 rvWeaponBlaster::State_Fire
 ================
-*/
+
 stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 	enum {
 		FIRE_INIT,
@@ -451,7 +451,7 @@ stateResult_t rvWeaponBlaster::State_Fire ( const stateParms_t& parms ) {
 	}			
 	return SRESULT_ERROR;
 }
-
+*/
 /*
 ================
 rvWeaponBlaster::State_Flashlight
