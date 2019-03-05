@@ -353,6 +353,7 @@ bool rvSpawner::SpawnEnt( void ){
 	args.Set	   ( "classname",		temp );	
 	args.SetBool   ( "forceEnemy",		spawnArgs.GetBool ( "auto_target", "1" ) );
 	args.SetBool   ( "faceEnemy",		spawnArgs.GetBool ( "faceEnemy", "0" ) );
+	args.SetBool   ( "slenderMan",		spawnArgs.GetBool ( "faceEnemy", "0" ) );//was not here
 
 	// Copy all keywords prefixed with "spawn_" to the entity being spawned.
 	CopyPrefixedSpawnArgs( this, "spawn_", args );

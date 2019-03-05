@@ -97,7 +97,7 @@ idCVar si_autobalance(				"si_autobalance",			"1",			CVAR_GAME | CVAR_SERVERINFO
 idCVar si_entityFilter(				"si_entityFilter",			"",				CVAR_GAME | CVAR_SERVERINFO, "filter to use when spawning entities" );
 idCVar si_countDown(				"si_countDown",				"10",			CVAR_GAME | CVAR_SERVERINFO | CVAR_INTEGER, "pregame countdown in seconds", 4, 3600 );
 // MCG: added "weapon stay" option
-idCVar si_weaponStay(				"si_weaponStay",			"0",			CVAR_GAME | CVAR_SERVERINFO | CVAR_BOOL, "cannot pick up weapons you already have (get no ammo from them)" );
+idCVar si_weaponStay(				"si_weaponStay",			"0",/*useful*/	CVAR_GAME | CVAR_SERVERINFO | CVAR_BOOL, "cannot pick up weapons you already have (get no ammo from them)" );
 // RAVEN END
 
 // RITUAL BEGIN
@@ -122,9 +122,9 @@ idCVar ui_model_strogg(				"ui_model_strogg",			"",	CVAR_GAME | CVAR_USERINFO | 
 idCVar ui_clan(						"ui_clan",					"",	CVAR_GAME | CVAR_USERINFO | PC_CVAR_ARCHIVE | CVAR_CASE_SENSITIVE | CVAR_SPECIAL_CONCAT, "player clan" );
 idCVar ui_hitscanTint(				"ui_hitscanTint",			"120.0 0.6 1.0",	CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE, "a tint applied to select hitscan effects.  Specified as a value in HSV color space. Hue [0.0-360.0] Saturation [0.0-1.0] Value [0.75-1.0]" );
 // RAVEN END
-idCVar ui_autoSwitch(				"ui_autoSwitch",			"1",			CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "auto switch weapon" );
-idCVar ui_autoReload(				"ui_autoReload",			"1",			CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "auto reload weapon" );
-idCVar ui_showGun(					"ui_showGun",				"1",			CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "show gun" );
+idCVar ui_autoSwitch(				"ui_autoSwitch",			"0",/*was 1*/	CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "auto switch weapon" );
+idCVar ui_autoReload(				"ui_autoReload",			"0",/*was 1*/	CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "auto reload weapon" );
+idCVar ui_showGun(					"ui_showGun",				"0",/*was 1*/	CVAR_GAME | CVAR_USERINFO | CVAR_ARCHIVE | CVAR_BOOL, "show gun" );
 idCVar ui_ready(					"ui_ready",				si_readyArgs[ 0 ],	CVAR_GAME | CVAR_USERINFO, "player is ready to start playing", idCmdSystem::ArgCompletion_String<si_readyArgs> );
 idCVar ui_spectate(					"ui_spectate",		si_spectateArgs[ 0 ],	CVAR_GAME | CVAR_USERINFO, "play or spectate", idCmdSystem::ArgCompletion_String<si_spectateArgs> );
 idCVar ui_chat(						"ui_chat",					"0",			CVAR_GAME | CVAR_USERINFO | CVAR_BOOL | CVAR_ROM | CVAR_CHEAT, "player is chatting" );
@@ -142,8 +142,8 @@ idCVar g_fixedHorizFOV(				"r_fixedHorizFOV",			"0",			CVAR_RENDERER | CVAR_BOOL
 idCVar g_cinematic(					"g_cinematic",				"1",			CVAR_GAME | CVAR_BOOL, "skips updating entities that aren't marked 'cinematic' '1' during cinematics" );
 idCVar g_cinematicMaxSkipTime(		"g_cinematicMaxSkipTime",	"600",			CVAR_GAME | CVAR_FLOAT, "# of seconds to allow game to run when skipping cinematic.  prevents lock-up when cinematic doesn't end.", 0, 3600 );
 
-idCVar g_muzzleFlash(				"g_muzzleFlash",			"1",			CVAR_GAME | CVAR_ARCHIVE | CVAR_BOOL, "show muzzle flashes" );
-idCVar g_projectileLights(			"g_projectileLights",		"1",			CVAR_GAME | CVAR_ARCHIVE | CVAR_BOOL, "show dynamic lights on projectiles" );
+idCVar g_muzzleFlash(				"g_muzzleFlash",			"0",/*was 1*/	CVAR_GAME | CVAR_ARCHIVE | CVAR_BOOL, "show muzzle flashes" );
+idCVar g_projectileLights(			"g_projectileLights",		"0",/*was 1*/	CVAR_GAME | CVAR_ARCHIVE | CVAR_BOOL, "show dynamic lights on projectiles" );
 idCVar g_doubleVision(				"g_doubleVision",			"1",			CVAR_GAME | CVAR_ARCHIVE | CVAR_BOOL, "show double vision when taking damage" );
 idCVar g_monsters(					"g_monsters",				"1",			CVAR_GAME | CVAR_BOOL, "" );
 idCVar g_decals(					"g_decals",					"1",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "show decals such as bullet holes" );
@@ -243,9 +243,9 @@ idCVar ai_animShow(					"ai_animShow",				"0",			CVAR_GAME | CVAR_BOOL, "" );
 idCVar ai_showCover(				"ai_showCover",				"0",			CVAR_GAME | CVAR_INTEGER, "" );
 idCVar ai_showTacticalFeatures(		"ai_showTacticalFeatures",	"0",			CVAR_GAME | CVAR_INTEGER, "" );
 idCVar ai_disableEntTactical(		"ai_disableEntTactical",	"0",			CVAR_GAME | CVAR_BOOL, "disables tactical points around entities" );
-idCVar ai_disableAttacks(			"ai_disableAttacks",		"0",			CVAR_GAME | CVAR_BOOL, "disables attack decisions" );
-idCVar ai_disableSimpleThink(		"ai_disableSimpleThink",	"0",			CVAR_GAME | CVAR_BOOL, "disables simple thinking in AI entities" );
-idCVar ai_disableCover(				"ai_disableCover",			"0",			CVAR_GAME | CVAR_BOOL, "disables AI using cover points" );
+idCVar ai_disableAttacks(			"ai_disableAttacks",		"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables attack decisions" );
+idCVar ai_disableSimpleThink(		"ai_disableSimpleThink",	"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables simple thinking in AI entities" );
+idCVar ai_disableCover(				"ai_disableCover",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables AI using cover points" );
 //cdr: use new master move functions
 idCVar ai_useRVMasterMove(			"ai_useRVMasterMove",		"0",			CVAR_GAME | CVAR_BOOL, "changes AI to use new master move function" );
 //jshepard: allow out of date AAS files to be used, for testing
@@ -344,8 +344,8 @@ idCVar pm_jumpheight(				"pm_jumpheight",			"48",			CVAR_GAME | CVAR_NETWORKSYNC
 idCVar pm_stepsize(					"pm_stepsize",				"16",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "maximum height the player can step up without jumping" );
 idCVar pm_crouchspeed(				"pm_crouchspeed",			"80",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while crouched" );
 // RAVEN BEGIN
-idCVar pm_speed(					"pm_speed",					"160",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while running" );
-idCVar pm_walkspeed(				"pm_walkspeed",				"80",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while walking" );
+idCVar pm_speed(					"pm_speed",					"80",/*was 160*/	CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while running");
+idCVar pm_walkspeed(				"pm_walkspeed",				"160",/*was 80*/	CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while walking" );
 // RAVEN END
 idCVar pm_noclipspeed(				"pm_noclipspeed",			"270",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while in noclip" );
 idCVar pm_spectatespeed(			"pm_spectatespeed",			"450",			CVAR_GAME | CVAR_NETWORKSYNC | CVAR_FLOAT | CVAR_NORESET, "speed the player can move while spectating" );
@@ -450,12 +450,12 @@ idCVar pm_vehicleCameraScaleMax(	"pm_vehicleCameraScaleMax",		"300",		CVAR_GAME 
 idCVar pm_vehicleSoundLerpScale(	"pm_vehicleSoundLerpScale",		"10",		CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_FLOAT, "" );
 // RAVEN END
 
-idCVar g_showPlayerShadow(			"g_showPlayerShadow",		"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "enables shadow of player model" );
+idCVar g_showPlayerShadow(			"g_showPlayerShadow",		"1",/*was 0*/	CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "enables shadow of player model" );
 
 idCVar g_skipPlayerShadowsMP(		"g_skipPlayerShadowsMP",	"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "disables all player shadows in multiplayer" );
 idCVar g_skipItemShadowsMP(			"g_skipItemShadowsMP",		"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "disables all item shadows in multiplayer" );
 idCVar g_simpleItems(				"g_simpleItems",			"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "render icon representations of items instead of the actual model" );
-idCVar g_showHud(					"g_showHud",				"1",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "" );
+idCVar g_showHud(					"g_showHud",				"0",/*was 1*/	CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "" );
 idCVar g_showProjectilePct(			"g_showProjectilePct",		"0",			CVAR_GAME | PC_CVAR_ARCHIVE | CVAR_BOOL, "enables display of player hit percentage" );
 // RAVEN BEGIN
 // dluetscher: changed to g_brassTime
@@ -582,16 +582,16 @@ idCVar cl_showEntityInfo(			"cl_showEntityInfo",		"0",			CVAR_GAME | CVAR_BOOL, 
 // ddynerman: announcer delay time
 idCVar g_announcerDelay( "g_announcerDelay", "1000", CVAR_SOUND | PC_CVAR_ARCHIVE, "no more than one announcer sound will be played in this many ms" );
 // jnewquist: Option to force undying state
-idCVar g_forceUndying(				"g_forceUndying",			"0",			CVAR_GAME | CVAR_BOOL, "forces undying state" );
+idCVar g_forceUndying(				"g_forceUndying",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "forces undying state" );
 // mcg: combat performance testing cvars
-idCVar g_perfTest_weaponNoFX(				"g_perfTest_weaponNoFX",			"0",			CVAR_GAME | CVAR_BOOL, "no muzzle flash, brass eject, muzzle fx, tracers, impact fx, blood decals or blood splats (whew!)" );
+idCVar g_perfTest_weaponNoFX(				"g_perfTest_weaponNoFX",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "no muzzle flash, brass eject, muzzle fx, tracers, impact fx, blood decals or blood splats (whew!)" );
 idCVar g_perfTest_hitscanShort(				"g_perfTest_hitscanShort",			"0",			CVAR_GAME | CVAR_BOOL, "all hitscans capped at 2048" );
 idCVar g_perfTest_hitscanBBox(				"g_perfTest_hitscanBBox",			"0",			CVAR_GAME | CVAR_BOOL, "all hitscans vs bbox, not rendermodel" );
-idCVar g_perfTest_aiStationary(				"g_perfTest_aiStationary",			"0",			CVAR_GAME | CVAR_BOOL, "ai attempts no combat movement" );
-idCVar g_perfTest_aiNoDodge(				"g_perfTest_aiNoDodge",				"0",			CVAR_GAME | CVAR_BOOL, "ai attempts no dodging" );
+idCVar g_perfTest_aiStationary(				"g_perfTest_aiStationary",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no combat movement" );
+idCVar g_perfTest_aiNoDodge(				"g_perfTest_aiNoDodge",				"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no dodging" );
 idCVar g_perfTest_aiNoRagdoll(				"g_perfTest_aiNoRagdoll",			"0",			CVAR_GAME | CVAR_BOOL, "ai does not ragdoll" );
-idCVar g_perfTest_aiNoObstacleAvoid(		"g_perfTest_aiNoObstacleAvoid",		"0",			CVAR_GAME | CVAR_BOOL, "ai does not attempt obstacle avoidance" );
-idCVar g_perfTest_aiUndying(				"g_perfTest_aiUndying",				"0",			CVAR_GAME | CVAR_BOOL, "makes all AI undying" );
+idCVar g_perfTest_aiNoObstacleAvoid(		"g_perfTest_aiNoObstacleAvoid",		"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai does not attempt obstacle avoidance" );
+idCVar g_perfTest_aiUndying(				"g_perfTest_aiUndying",				"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "makes all AI undying" );
 idCVar g_perfTest_aiNoVisTrace(				"g_perfTest_aiNoVisTrace",			"0",			CVAR_GAME | CVAR_BOOL, "ai does no vis traces" );
 idCVar g_perfTest_noJointTransform(			"g_perfTest_noJointTransform",		"0",			CVAR_GAME | CVAR_BOOL, "all joint transforms return origin" );
 idCVar g_perfTest_noPlayerFocus(			"g_perfTest_noPlayerFocus",			"0",			CVAR_GAME | CVAR_BOOL, "doesn't do player focus traces/logic" );
