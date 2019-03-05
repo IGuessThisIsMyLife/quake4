@@ -16,7 +16,7 @@ I'm trying to develop SlenderQuake. The player has no weapons, but is instead su
 The controls work the same as the original, however anything related to a weapon that isn't a flashlight or zoom is disabled.
 The idea is to try and collect all 8 "pages" before Slenderman catches you so there will be a character asset (berserker) chasing you around the map.
 
-Usual motion controls
-'F' for flashlight
+Usual motion controls.
+'F' for flashlight.
 
 Good Luck!
