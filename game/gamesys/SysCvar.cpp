@@ -243,9 +243,9 @@ idCVar ai_animShow(					"ai_animShow",				"0",			CVAR_GAME | CVAR_BOOL, "" );
 idCVar ai_showCover(				"ai_showCover",				"0",			CVAR_GAME | CVAR_INTEGER, "" );
 idCVar ai_showTacticalFeatures(		"ai_showTacticalFeatures",	"0",			CVAR_GAME | CVAR_INTEGER, "" );
 idCVar ai_disableEntTactical(		"ai_disableEntTactical",	"0",			CVAR_GAME | CVAR_BOOL, "disables tactical points around entities" );
-idCVar ai_disableAttacks(			"ai_disableAttacks",		"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables attack decisions" );
-idCVar ai_disableSimpleThink(		"ai_disableSimpleThink",	"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables simple thinking in AI entities" );
-idCVar ai_disableCover(				"ai_disableCover",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables AI using cover points" );
+idCVar ai_disableAttacks(			"ai_disableAttacks",		"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables attack decisions" );
+idCVar ai_disableSimpleThink(		"ai_disableSimpleThink",	"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables simple thinking in AI entities" );
+idCVar ai_disableCover(				"ai_disableCover",			"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "disables AI using cover points" );
 //cdr: use new master move functions
 idCVar ai_useRVMasterMove(			"ai_useRVMasterMove",		"0",			CVAR_GAME | CVAR_BOOL, "changes AI to use new master move function" );
 //jshepard: allow out of date AAS files to be used, for testing
@@ -584,14 +584,14 @@ idCVar g_announcerDelay( "g_announcerDelay", "1000", CVAR_SOUND | PC_CVAR_ARCHIV
 // jnewquist: Option to force undying state
 idCVar g_forceUndying(				"g_forceUndying",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "forces undying state" );
 // mcg: combat performance testing cvars
-idCVar g_perfTest_weaponNoFX(				"g_perfTest_weaponNoFX",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "no muzzle flash, brass eject, muzzle fx, tracers, impact fx, blood decals or blood splats (whew!)" );
+idCVar g_perfTest_weaponNoFX(				"g_perfTest_weaponNoFX",			"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "no muzzle flash, brass eject, muzzle fx, tracers, impact fx, blood decals or blood splats (whew!)" );
 idCVar g_perfTest_hitscanShort(				"g_perfTest_hitscanShort",			"0",			CVAR_GAME | CVAR_BOOL, "all hitscans capped at 2048" );
 idCVar g_perfTest_hitscanBBox(				"g_perfTest_hitscanBBox",			"0",			CVAR_GAME | CVAR_BOOL, "all hitscans vs bbox, not rendermodel" );
-idCVar g_perfTest_aiStationary(				"g_perfTest_aiStationary",			"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no combat movement" );
-idCVar g_perfTest_aiNoDodge(				"g_perfTest_aiNoDodge",				"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no dodging" );
+idCVar g_perfTest_aiStationary(				"g_perfTest_aiStationary",			"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no combat movement" );
+idCVar g_perfTest_aiNoDodge(				"g_perfTest_aiNoDodge",				"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai attempts no dodging" );
 idCVar g_perfTest_aiNoRagdoll(				"g_perfTest_aiNoRagdoll",			"0",			CVAR_GAME | CVAR_BOOL, "ai does not ragdoll" );
-idCVar g_perfTest_aiNoObstacleAvoid(		"g_perfTest_aiNoObstacleAvoid",		"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai does not attempt obstacle avoidance" );
-idCVar g_perfTest_aiUndying(				"g_perfTest_aiUndying",				"1",/*was 0*/	CVAR_GAME | CVAR_BOOL, "makes all AI undying" );
+idCVar g_perfTest_aiNoObstacleAvoid(		"g_perfTest_aiNoObstacleAvoid",		"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "ai does not attempt obstacle avoidance" );
+idCVar g_perfTest_aiUndying(				"g_perfTest_aiUndying",				"0",/*was 0*/	CVAR_GAME | CVAR_BOOL, "makes all AI undying" );
 idCVar g_perfTest_aiNoVisTrace(				"g_perfTest_aiNoVisTrace",			"0",			CVAR_GAME | CVAR_BOOL, "ai does no vis traces" );
 idCVar g_perfTest_noJointTransform(			"g_perfTest_noJointTransform",		"0",			CVAR_GAME | CVAR_BOOL, "all joint transforms return origin" );
 idCVar g_perfTest_noPlayerFocus(			"g_perfTest_noPlayerFocus",			"0",			CVAR_GAME | CVAR_BOOL, "doesn't do player focus traces/logic" );

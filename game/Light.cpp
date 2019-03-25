@@ -637,8 +637,37 @@ void idLight::SetRadius( float radius ) {
 idLight::On
 ================
 */
+//was
 void idLight::On( void ) {
-	currentLevel = levels;
+	idStr	blinkOffSound;
+	if (spawnArgs.GetString("snd_blinkOff", "", blinkOffSound))
+	{
+		refSound.shader = declManager->FindSound(blinkOffSound);
+		int howLongInMS = StartSoundShader(refSound.shader, SND_CHANNEL_ANY, 0, false, NULL);//*1000;
+		PostEventMS(&EV_Light_DoneBlinkingOff, howLongInMS);
+		soundWasPlaying = false;
+		idStr	blinkOffTexture;
+		if (spawnArgs.GetString("mtr_blinkOff", "", blinkOffTexture))
+		{
+			renderLight.shader = declManager->FindMaterial(blinkOffTexture, false);
+			UpdateVisuals();
+			Present();
+		}
+	}
+	else
+	{
+		currentLevel = 0;
+		// kill any sound it was making
+		idSoundEmitter *emitter = soundSystem->EmitterForIndex(SOUNDWORLD_GAME, refSound.referenceSoundHandle);
+		if (emitter && emitter->CurrentlyPlaying()) {
+			StopSound(SND_CHANNEL_ANY, false);
+			soundWasPlaying = true;
+		}
+	}
+	// RAVEN END
+	SetLightLevel();
+	BecomeActive(TH_UPDATEVISUALS);
+/*	currentLevel = levels;
 	// offset the start time of the shader to sync it to the game time
 	renderLight.shaderParms[ SHADERPARM_TIMEOFFSET ] = -MS2SEC( gameLocal.time );
 
@@ -666,7 +695,7 @@ void idLight::On( void ) {
 		soundWasPlaying = false;
 	}
 	SetLightLevel();
-	BecomeActive( TH_UPDATEVISUALS );
+	BecomeActive( TH_UPDATEVISUALS );*/
 }
 
 /*
